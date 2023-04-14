@@ -1,0 +1,38 @@
+.background {
+  position: sticky;
+  height: 100vh;
+  width: 100%;
+
+  background: linear-gradient(133deg, rgba(159, 229, 255, 1) 0%, rgba(98, 149, 255, 1) 53%, rgba(0, 212, 255, 1) 100%);
+}
+
+.formContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form {
+    width: 40%;
+    background-color: azure;
+    padding: 30px;
+    border-radius: 10px;
+  }
+
+  .btnGroup {
+    margin-top: 10px;
+    width: 100%;
+
+    .login, .register {
+      text-align: center;
+      width: 100%
+    }
+  }
+}
+
+
+
+
+
+
+
