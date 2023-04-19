@@ -1,0 +1,15 @@
+.background {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+
+  background: linear-gradient(133deg, rgba(159, 229, 255, 1) 0%, rgba(98, 149, 255, 1) 53%, rgba(0, 212, 255, 1) 100%);
+}
+
+.homePageContainer {
+  background-color: azure;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}

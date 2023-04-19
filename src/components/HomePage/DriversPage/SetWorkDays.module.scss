@@ -1,0 +1,20 @@
+.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(248, 249, 250);
+  border: dimgrey 1px solid;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.rightSide {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  border-left: #9b9b9b 3px solid;
+  justify-content: space-between;
+  width: 60%;
+
+}

@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import styles from './LoginPage.module.scss';
 import {app} from '../../config/firebaseConfig';
 import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
-import {ButtonGroup} from "react-bootstrap";
+import {ButtonGroup, Spinner} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 
 const LoginPage: React.FC = () => {
@@ -13,6 +13,7 @@ const LoginPage: React.FC = () => {
     const auth = getAuth(app);
 
     const [formData, setFormData] = useState({email: '', password: ''});
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {target} = e;
@@ -25,16 +26,21 @@ const LoginPage: React.FC = () => {
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+
         try {
             const response = await signInWithEmailAndPassword(auth, formData.email, formData.password);
 
-            const idToken = await response.user.getIdToken();
-            localStorage.setItem('token', idToken);
+            const uid = response.user.uid;
+            localStorage.setItem('uid', uid);
 
             navigate('/home');
         }
         catch (e: any) {
             alert(e.message);
+        }
+        finally {
+            setIsLoading(false);
         }
     };
 
@@ -63,8 +69,21 @@ const LoginPage: React.FC = () => {
                             onChange={handleInputChange}
                         />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Отправить
+                    <Button variant="primary" type="submit" disabled={isLoading}>
+                        {
+                            isLoading
+                                ? <>
+                                    <Spinner
+                                        as="span"
+                                        animation="border"
+                                        size="sm"
+                                        role="status"
+                                        aria-hidden="true"
+                                    />
+                                    <span> Отправить</span>
+                                </>
+                                : 'Отправить'
+                        }
                     </Button>
                     <hr/>
                     <div className={styles.btnGroup}>
