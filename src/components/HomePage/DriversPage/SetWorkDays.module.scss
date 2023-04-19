@@ -7,14 +7,33 @@
   border: dimgrey 1px solid;
   border-radius: 15px;
   padding: 20px;
+
+  .rightSide {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    border-left: #9b9b9b 3px solid;
+    justify-content: space-between;
+    width: 60%;
+
+    .datesList {
+      overflow: auto;
+      max-height: 230px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+
+      .send, .home {
+        width: 45%;
+        text-align: center;
+      }
+    }
+  }
 }
 
-.rightSide {
-  padding-left: 10px;
-  display: flex;
-  flex-direction: column;
-  border-left: #9b9b9b 3px solid;
-  justify-content: space-between;
-  width: 60%;
-
+.tile {
+  background-color: rgba(27, 255, 27, 0.38);
 }
